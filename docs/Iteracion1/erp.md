@@ -14,7 +14,7 @@
 
 > **Usuarios afectados:**
 >
-> ¿Los clientes potenciales incluyen consumidores interesados en productos ecológicos, empresas que venden productos ecológicos y organizaciones que promueven la sostenibilidad. Estos usuarios se beneficiarán de una plataforma eficiente y fácil de usar para comprar y vender productos ecológicos.
+> Los clientes potenciales incluyen consumidores interesados en productos ecológicos, empresas que venden productos ecológicos y organizaciones que promueven la sostenibilidad. Estos usuarios se beneficiarán de una plataforma eficiente y fácil de usar para comprar y vender productos ecológicos.
 
 ---
 
@@ -29,9 +29,17 @@
 
 ## Requisitos
 
-> **Historias de usuarios:**
->
-> Enumeren los requisitos en formato de historias de usuarios. Piensen que tipos de requisitos son.
+> **Historias de usuario**
+> 1. **Como** Cliente, **quiero** ver una lista de productos ecológicos disponibles, **para** escoger los productos que quiero comprar.
+> 2. **Como** Cliente, **quiero** poder buscar productos por categoría o palabras clave, **para** encontrar rápidamente los productos que necesito.
+> 3. **Como** Cliente, **quiero** ver el precio total de mi compra incluyendo descuentos aplicables, **para** saber cuánto pagaré antes de realizar el pedido.
+> 4. **Como** Cliente, **quiero** seleccionar diferentes métodos de pago como tarjeta o transferencia bancaria, **para** pagar de forma conveniente y segura.
+> 5. **Como** Administrador, **quiero** agregar nuevos productos al inventario con su descripción, precio y cantidad, **para** mantener el catálogo actualizado.
+> 6. **Como** Administrador, **quiero** modificar la cantidad de productos en el inventario cuando se realiza una venta, **para** mantener un control preciso del inventario.
+> 7. **Como** Administrador, **quiero** aplicar descuentos automáticos a ciertos productos o paquetes, **para** ofrecer promociones atractivas a los clientes.
+> 8. **Como** Cliente, **quiero** recibir una confirmación de compra por correo electrónico con el detalle de mi pedido, **para** tener un comprobante y detalle de mi compra.
+> 9. **Como** Administrador, **quiero** acceder a un historial de ventas y detalles de cada pedido, **para** analizar el rendimiento de las ventas y tomar decisiones informadas.
+> 10. **Como** Cliente, **quiero** ver recomendaciones de productos basadas en mis compras anteriores, **para** descubrir productos que puedan interesarme y mejorar mi experiencia de compra.
 
 ---
 
