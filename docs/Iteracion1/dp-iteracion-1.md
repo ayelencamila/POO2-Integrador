@@ -18,7 +18,7 @@
 
 > **Diagrama UML de clases:**
 >
-> ![Diagrama UML de clases](ruta/a/tu/diagrama.png)
+> ![Diagrama UML de clases](ruta/al/diagrama.png)
 >
 > Descripción del diagrama UML y los componentes incluidos en esta iteración.
 
@@ -28,7 +28,7 @@
 
 > **Bocetos de la interfaz de usuario:**
 >
-> ![Wireframe](ruta/a/tu/wireframe.png)
+> ![Wireframe](ruta/al/wireframe.png)
 >
 > **Casos de uso:**
 >
