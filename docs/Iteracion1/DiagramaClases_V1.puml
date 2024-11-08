@@ -7,7 +7,7 @@ enum TipoPago {
     TRANSFERENCIA_BANCARIA
 }
 
-' Interfaces
+' Interfaces para patrones Observer y Strategy
 interface EstrategiaPago {
     +pagar(monto: double): void
 }
@@ -32,7 +32,7 @@ abstract class Usuario {
     +getCorreo(): String
 }
 
-' Clases concretas
+' Clases concretas de Usuario
 class Cliente extends Usuario {
     +agregarProductoAlCarrito(producto: Producto): void
     +eliminarProductoDelCarrito(producto: Producto): void
@@ -45,6 +45,7 @@ class Administrador extends Usuario {
     +eliminarProducto(producto: Producto): void
 }
 
+' Clase Producto
 class Producto {
     -id: Long
     -nombre: String
@@ -59,6 +60,7 @@ class Producto {
     +setStock(stock: int): void
 }
 
+' Clase Pedido (implementa Sujeto del patrón Observer)
 class Pedido implements Sujeto {
     -id: Long
     -productos: List<Producto>
@@ -75,10 +77,12 @@ class Pedido implements Sujeto {
     +notificarObservadores(): void
 }
 
+' Implementación del Observador (NotificacionCorreo)
 class NotificacionCorreo implements Observador {
     +actualizar(pedido: Pedido): void
 }
 
+' Contexto y estrategias de pago (patrón Strategy)
 class ContextoPago {
     -estrategia: EstrategiaPago
     +setEstrategiaPago(estrategia: EstrategiaPago): void
@@ -97,6 +101,7 @@ class PagoTransferenciaBancaria implements EstrategiaPago {
     +pagar(monto: double): void
 }
 
+' Clase de Descuento
 class Descuento {
     -id: Long
     -descripcion: String
@@ -106,7 +111,14 @@ class Descuento {
     +getPorcentaje(): double
 }
 
-' Relaciones
+' Clase Facade (opcional)
+class SistemaFacade {
+    +realizarCompra(cliente: Cliente, productos: List<Producto>, tipoPago: TipoPago): void
+    +agregarProductoAdmin(admin: Administrador, producto: Producto): void
+    +eliminarProductoAdmin(admin: Administrador, producto: Producto): void
+}
+
+' Relaciones de clases
 Cliente --> Pedido
 Administrador --> Producto
 Pedido --> Producto
@@ -119,5 +131,22 @@ EstrategiaPago <|.. PagoTransferenciaBancaria
 Pedido --> Observador
 Observador <|.. NotificacionCorreo
 Sujeto <|.. Pedido
+
+' Relación de Cliente y Administrador con SistemaFacade (Facade opcional)
+Cliente --> SistemaFacade
+Administrador --> SistemaFacade
+
+@enduml
+Observador <|.. NotificacionCorreo
+Sujeto <|.. Pedido
+
+' Decorator Pattern
+Descuento <|-- DescuentoBase
+DescuentoBase <|-- DescuentoPorcentajeDecorator
+DescuentoBase <|-- DescuentoFijoDecorator
+
+' Relación de Cliente y Administrador con SistemaFacade (Facade opcional)
+Cliente --> SistemaFacade
+Administrador --> SistemaFacade
 
 @enduml
