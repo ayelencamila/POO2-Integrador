@@ -1,0 +1,123 @@
+@startuml iteracion1_VentaProductosLinea
+
+' Enumeraciones
+enum TipoPago {
+    TARJETA_CREDITO
+    TARJETA_DEBITO
+    TRANSFERENCIA_BANCARIA
+}
+
+' Interfaces
+interface EstrategiaPago {
+    +pagar(monto: double): void
+}
+
+interface Observador {
+    +actualizar(pedido: Pedido): void
+}
+
+interface Sujeto {
+    +registrarObservador(observador: Observador): void
+    +eliminarObservador(observador: Observador): void
+    +notificarObservadores(): void
+}
+
+' Clases abstractas
+abstract class Usuario {
+    -id: Long
+    -nombre: String
+    -correo: String
+    +getId(): Long
+    +getNombre(): String
+    +getCorreo(): String
+}
+
+' Clases concretas
+class Cliente extends Usuario {
+    +agregarProductoAlCarrito(producto: Producto): void
+    +eliminarProductoDelCarrito(producto: Producto): void
+    +realizarCompra(): void
+}
+
+class Administrador extends Usuario {
+    +agregarProducto(producto: Producto): void
+    +actualizarProducto(producto: Producto): void
+    +eliminarProducto(producto: Producto): void
+}
+
+class Producto {
+    -id: Long
+    -nombre: String
+    -descripcion: String
+    -precio: double
+    -stock: int
+    +getId(): Long
+    +getNombre(): String
+    +getDescripcion(): String
+    +getPrecio(): double
+    +getStock(): int
+    +setStock(stock: int): void
+}
+
+class Pedido implements Sujeto {
+    -id: Long
+    -productos: List<Producto>
+    -precioTotal: double
+    -observadores: List<Observador>
+    +getId(): Long
+    +getProductos(): List<Producto>
+    +getPrecioTotal(): double
+    +agregarProducto(producto: Producto): void
+    +eliminarProducto(producto: Producto): void
+    +calcularPrecioTotal(): void
+    +registrarObservador(observador: Observador): void
+    +eliminarObservador(observador: Observador): void
+    +notificarObservadores(): void
+}
+
+class NotificacionCorreo implements Observador {
+    +actualizar(pedido: Pedido): void
+}
+
+class ContextoPago {
+    -estrategia: EstrategiaPago
+    +setEstrategiaPago(estrategia: EstrategiaPago): void
+    +pagar(monto: double): void
+}
+
+class PagoTarjetaCredito implements EstrategiaPago {
+    +pagar(monto: double): void
+}
+
+class PagoTarjetaDebito implements EstrategiaPago {
+    +pagar(monto: double): void
+}
+
+class PagoTransferenciaBancaria implements EstrategiaPago {
+    +pagar(monto: double): void
+}
+
+class Descuento {
+    -id: Long
+    -descripcion: String
+    -porcentaje: double
+    +getId(): Long
+    +getDescripcion(): String
+    +getPorcentaje(): double
+}
+
+' Relaciones
+Cliente --> Pedido
+Administrador --> Producto
+Pedido --> Producto
+Pedido --> Descuento
+Pedido --> ContextoPago
+ContextoPago --> EstrategiaPago
+EstrategiaPago <|.. PagoTarjetaCredito
+EstrategiaPago <|.. PagoTarjetaDebito
+EstrategiaPago <|.. PagoTransferenciaBancaria
+Pedido --> Observador
+Observador <|.. NotificacionCorreo
+Sujeto <|.. Pedido
+
+@enduml
