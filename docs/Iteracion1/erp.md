@@ -24,12 +24,12 @@
 >
 > La solución propuesta es un sistema de software que permitirá la venta de productos ecológicos en línea. El sistema gestionará el inventario, calculará precios con descuentos y se integrará con múltiples métodos de pago. Esto facilitará a los usuarios la compra y venta de productos ecológicos de manera eficiente y segura.
 
-
 ---
 
 ## Requisitos
 
 > **Historias de usuario**
+>
 > 1. **Como** Cliente, **quiero** ver una lista de productos ecológicos disponibles, **para** escoger los productos que quiero comprar.
 > 2. **Como** Cliente, **quiero** poder buscar productos por categoría o palabras clave, **para** encontrar rápidamente los productos que necesito.
 > 3. **Como** Cliente, **quiero** ver el precio total de mi compra incluyendo descuentos aplicables, **para** saber cuánto pagaré antes de realizar el pedido.
